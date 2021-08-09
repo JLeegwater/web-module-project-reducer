@@ -6,6 +6,7 @@ import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 import {
   addOne,
+  applyMemory,
   applyNumber,
   changeOperation,
   clearDisplay,
@@ -23,6 +24,10 @@ function App() {
 
   const handleClearDisplay = () => {
     dispatch(clearDisplay());
+  };
+
+  const handleApplyMemory = (action) => {
+    dispatch(applyMemory(action));
   };
 
   return (
@@ -48,9 +53,24 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={"M+"} />
-              <CalcButton value={"MR"} />
-              <CalcButton value={"MC"} />
+              <CalcButton
+                value={"M+"}
+                onClick={() => {
+                  handleApplyMemory("M+");
+                }}
+              />
+              <CalcButton
+                value={"MR"}
+                onClick={() => {
+                  handleApplyMemory("MR");
+                }}
+              />
+              <CalcButton
+                value={"MC"}
+                onClick={() => {
+                  handleApplyMemory("MC");
+                }}
+              />
             </div>
 
             <div className="row">
